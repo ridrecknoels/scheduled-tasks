@@ -12,10 +12,6 @@ import random
 import smtplib
 import os
 
-my_email = "ridrecktest@gmail.com"
-password = "vmkm fjem icml saqj"
-
-
 # read quotes file
 with open("quotes.txt") as file:
     quotes = [line.strip() for line in file]
