@@ -12,6 +12,10 @@ import random
 import smtplib
 import os
 
+# import os and use it to get the Github repository secrets
+MY_EMAIL = os.environ.get("MY_EMAIL")
+MY_PASSWORD = os.environ.get("MY_PASSWORD")
+
 # read quotes file
 with open("quotes.txt") as file:
     quotes = [line.strip() for line in file]
@@ -24,14 +28,11 @@ if day_of_week == 4:
     # sending email
     with smtplib.SMTP('smtp.gmail.com') as connection:
         connection.starttls()
-        connection.login(user=my_email, password=password)
-        connection.sendmail(from_addr=my_email,to_addrs=my_email,
+        connection.login(user=MY_EMAIL, password=MY_PASSWORD)
+        connection.sendmail(from_addr=MY_EMAIL,to_addrs=MY_EMAIL,
                             msg=f"Subject: Motivational Quote\n\n{quote_to_send}"
                             )
         
-# import os and use it to get the Github repository secrets
-MY_EMAIL = os.environ.get("MY_EMAIL")
-MY_PASSWORD = os.environ.get("MY_PASSWORD")
 
 today = datetime.now()
 today_tuple = (today.month, today.day)
